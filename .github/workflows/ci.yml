@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -31,8 +31,7 @@ jobs:
 
     - name: Lint with flake8
       run: |
-        # No romper la ejecución por ahora; reporta fallos en la salida
-        flake8 || true
+        flake8
 
     - name: Check Python syntax (compile all .py)
       run: |
