@@ -1,0 +1,1 @@
+# Archivo inicializado del sistema
