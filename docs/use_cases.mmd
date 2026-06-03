@@ -1,0 +1,32 @@
+%% Diagrama de casos de uso para el proyecto IAsafe Local
+usecaseDiagram
+actor Usuario
+actor Administrador
+actor "Dispositivo IoT" as IoT
+actor "Servicio Emergencias" as Emergencias
+actor "Modelos IA / Cloud" as IA
+
+Usuario --> (Interactuar con asistente)
+Usuario --> (Configurar sistema)
+Administrador --> (Gestionar base de datos)
+IoT --> (Reportar sensores)
+IoT --> (Enviar telemetría)
+
+(Interactuar con asistente) ..> (Capturar audio) : includes
+(Interactuar con asistente) ..> (Analizar intención) : includes
+(Interactuar con asistente) ..> (Emitir voz) : includes
+
+(Monitoreo continuo) --> (Monitorear energía)
+(Monitoreo continuo) --> (Verificar incendios)
+(Monitoreo continuo) --> (Monitoreo perimetral)
+
+(Monitoreo perimetral) ..> (Analizar intención) : includes
+(Monitoreo perimetral) ..> (Analizar afecto/emoción) : includes
+(Analizar intención) ..> (Registrar sospechoso) : extends
+
+(Verificar incendios) ..> (Despachar emergencia) : includes
+(Registrar sospechoso) ..> (Despachar emergencia) : includes
+(Despachar emergencia) --> Emergencias
+
+(Analizar intención) --> IA
+(Analizar afecto/emoción) --> IA
